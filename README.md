@@ -13,9 +13,9 @@ openssl dhparam 2048 -out dhparam.pem
 
 # Other Considerations
 Consider putting this on a user-defined network and not on the bridge. This should be the best way to link web2py to other containers. These would be used mainly for optimization, and there are some easy to run containers provided that can be quickly set up and run. For example:
-- [Postgresql](http://web2py.com/books/default/chapter/29/13/deployment-recipes#Postgresql) - Use for [your database]().
+- [Postgresql](http://web2py.com/books/default/chapter/29/13/deployment-recipes#Postgresql) - Use for [your database](https://hub.docker.com/_/postgres/).
 ```
-docker run --name postgres -e POSTGRES_PASSWORD=<your password> -d --net <your network> --net-alias postgres postgres
+docker run --name postgres -e POSTGRES_PASSWORD=<your password> -e POSTGRES_USER=<your user> -e POSTGRES_DB=test -d --net <your network> --net-alias postgres postgres
 ```
 
 There may be some configuration changes, so either build using this image or `docker exec -it` in and change them manually.
